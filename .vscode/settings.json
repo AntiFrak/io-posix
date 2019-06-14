@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "wroom-list.c": "cpp",
+        "main.h": "c"
+    }
+}

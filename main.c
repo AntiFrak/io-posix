@@ -1,25 +1,38 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <stdbool.h>
-#include <pthread.h>
-#include <semaphore.h>
-#include <string.h>
-#include <time.h>
-#include <signal.h>
-#include "list.h"
+#include "main.h"
 
-sem_t sem;					//semafor fryzjera
-sem_t clients[300];			//semafor klientów
-sem_t shearing;				//semafor fotela
-sem_t barber;				//semafor strzyżenia
+int main(int argc, char* argv[]) {
+	if (argc == 1) {
+		printf("Uzycie: %s [liczba_krzesel]\n", argv[0]);
+		printf("\topcjonalne parametry: [-debug] [-zmienne]\n\n");
+		exit(EXIT_FAILURE);
+	}
+	int i = 2;
 
-pthread_mutex_t resignedClients;	//muteks klientów,którzy zrezygnowali
-pthread_mutex_t clientQueue;		//muteks kolejki klientów oraz aktualnego klienta
-pthread_mutex_t queue;				//muteks klientów
-pthread_mutex_t communicate;		//muteks wypisywanych zmiennych
+	numOfChairs = atoi(argv[1]);
+	if (numOfChairs < 1) {
+		printf("Liczba krzesel musi byc wieksza niz 0.\n\n");
+		exit(EXIT_FAILURE);
+	}
 
-int chairs, clientsNumber = 0, resigned = 0, currentClient = -1;
-bool debug = false;
+	for (i; i < argc; i++) {
+		if (strcmp(argv[i], "-debug") == 0) {
+			debug = 1;
+		}
+		else if (strcmp(argv[i], "-zmienne") == 0) {
+			condv = 1;
+		}
+		else {
+			printf("\tBlad: Dostepne parametry: [-debug] [-zmienne]\n");
+		}
+	}
 
-element *waiting = NULL;
-element *resign = NULL;
+	srand(time(NULL));
+	if (condv == 0) { // bez wykorzystania zmiennych warunkowych (tylko mutexy/semafory)
+		mutex_style();
+	}
+	else {
+		conditional_style(); // tu wywołanie funkcji do zmiennych warunkowych
+	}
+
+	return 0;
+}
