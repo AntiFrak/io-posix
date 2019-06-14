@@ -7,7 +7,7 @@
 #include "ticket_lock.c"
 #include "wroom-list.c"
 
-void logger();
+void log();
 void prepareResClients();
 void addResignedClient(int);
 
@@ -28,8 +28,8 @@ void *waitingRoom(void *);
 volatile int debug = 0;
 volatile int condv = 0;
 
-int *resClients; // tablica przechowujaca liste klientow, ktorzy zrezygnowali z wizyty
-int resClientsSize = 10; // zmienna przechowujaca aktualny rozmiar listy Res
+int *resClients; // tablica klientow, ktorzy zrezygnowali z wizyty
+int resClientsSize = 10; // aktualny rozmiar listy Res
 volatile int resigned = 0; // liczba klientow ktorzy zrezygnowali z wizyty
 
 volatile int numOfChairs; // liczba krzesel w poczekalni
@@ -61,6 +61,6 @@ ticket_lock_t queueFIFOMutex = TICKET_LOCK_INITIALIZER;
 // conditional_style <<
 
 #include "mutex_style.c"
-#include "logger.c"
+#include "log.c"
 #include "resigned_clients.c"
 #include "conditional_style.c"

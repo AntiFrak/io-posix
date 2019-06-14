@@ -31,7 +31,7 @@ int main(int argc, char* argv[]) {
 		mutex_style();
 	}
 	else {
-		conditional_style(); // tu wywołanie funkcji do zmiennych warunkowych
+		conditional_style(); // z wykorzystaniem zmiennej warunkowej
 	}
 
 	return 0;
