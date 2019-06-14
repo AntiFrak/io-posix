@@ -1,7 +1,7 @@
 compile :
-	rm -rf compiled
-	mkdir compiled
-	gcc fryzjer.c -o compiled/fryzjer -pthread
+	rm -rf fryzjer
+	mkdir fryzjer
+	gcc main.c -o fryzjer/program -pthread
 
 ctm :
 	make compile
