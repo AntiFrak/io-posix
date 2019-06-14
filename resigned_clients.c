@@ -1,8 +1,8 @@
-// zaalokowanie pamieci na liste zrezygnowanych
+// zablokowanie pamieci na liste zrezygnowanych
 void prepareResClients() {
 	resClients = (int *)malloc(resClientsSize * sizeof(int));
 	if (resClients == NULL) {
-		fprintf(stderr, "error allocating memory for resigned clients list");
+		fprintf(stderr, "blad przedzielenia pameci dla kilentow zrezygnowanych");
 		exit(EXIT_FAILURE);
 	}
 }
@@ -13,7 +13,7 @@ void addResignedClient(int num) {
 		resClientsSize += 10;
 		resClients = realloc(resClients, resClientsSize * sizeof(int));
 		if (resClients == NULL) {
-			fprintf(stderr, "error reallocating memory for resigned clients list");
+			fprintf(stderr, "blad pamieci przy dodawaniu klienta do listy zrezygnowanych");
 			exit(EXIT_FAILURE);
 		}
 	}

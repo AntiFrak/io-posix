@@ -10,7 +10,7 @@ void pushToWRoomList(int num) {
 	if (head == NULL) {
 		head = malloc(sizeof(node_t));
 		if (head == NULL) {
-			fprintf(stderr, "Error preparing WRoom list");
+			fprintf(stderr, "Blad w poczekalni");
 			exit(EXIT_FAILURE);
 		}
 
@@ -55,7 +55,7 @@ void removeFromWRoomList(int num) {
 	}
 }
 
-// drukowanie listy osob w poczekalni
+// wyswietlanie listy osob w poczekalni
 void printWRoomList() {
 	node_t *current = head;
 
