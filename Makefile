@@ -9,13 +9,13 @@ ctm :
 	make tm
 
 tm :
-	compiled/fryzjer 5
+	fryzjer/program 5
 	
 tmd :
-	compiled/fryzjer 5 -debug
+	fryzjer/program 5 -debug
 	
 tz :
-	compiled/fryzjer 5 -zmienne
+	fryzjer/program 5 -zmienne
 
 tzd :
-	compiled/fryzjer 5 -debug -zmienne
+	fryzjer/program 5 -debug -zmienne
